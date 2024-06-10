@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctfis6lds14uy"]
+
+[ext_resource type="PackedScene" uid="uid://dma5b0mru6a6d" path="res://sas.glb" id="1_xmv0p"]
+
+[node name="sas" instance=ExtResource("1_xmv0p")]

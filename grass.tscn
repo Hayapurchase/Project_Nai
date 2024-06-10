@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://df7l1lfysmkhn"]
+
+[ext_resource type="PackedScene" uid="uid://bdhtdvxp8omjp" path="res://grass.glb" id="1_24jpp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1veq"]
+cull_mode = 2
+
+[node name="grass" instance=ExtResource("1_24jpp")]
+
+[node name="Plane_006" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_a1veq")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk8pdv42o38dp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onyqu"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="Curve" id="Curve_helt8"]
+max_value = 100.0
+_data = [Vector2(0, 0.366038), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.316901, 0.215094), 3.5366, 3.5366, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_hborf"]
+curve_z = SubResource("Curve_helt8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lalgm"]
+lifetime_randomness = 0.16
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 4.96
+emission_ring_radius = 3.235
+emission_ring_inner_radius = 2.99
+directional_velocity_min = 114.39
+directional_velocity_max = 515.91
+directional_velocity_curve = SubResource("CurveXYZTexture_hborf")
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4jllq"]
+size = Vector3(0.1, 0.1, 8.045)
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_onyqu")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_lalgm")
+draw_pass_1 = SubResource("BoxMesh_4jllq")

@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8acmmb0sc6wu"]
+
+[ext_resource type="Script" path="res://vehicle.gd" id="1_lnuhx"]
+[ext_resource type="Script" path="res://Wheels.gd" id="2_ida58"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eh4ap"]
+size = Vector3(2, 0.4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8of0g"]
+size = Vector3(2, 0.4, 4)
+
+[sub_resource type="FontFile" id="FontFile_bhk2p"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+
+[node name="Vehicle" type="RigidBody3D"]
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -10, 0)
+script = ExtResource("1_lnuhx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_eh4ap")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8of0g")
+
+[node name="Wheels" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.184084, 0)
+
+[node name="FR" type="RayCast3D" parent="Wheels"]
+transform = Transform3D(0.973487, 0, 0, 0, 0.973487, 0, 0, 0, 0.973487, 0.8, 0, -1.8)
+script = ExtResource("2_ida58")
+dampness = 1.0
+stiffness = 4
+
+[node name="Label3D" type="Label3D" parent="Wheels/FR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28613, 0)
+billboard = 2
+text = "sas"
+font = SubResource("FontFile_bhk2p")
+font_size = 50
+
+[node name="FL" type="RayCast3D" parent="Wheels"]
+transform = Transform3D(0.973487, 0, 0, 0, 0.973487, 0, 0, 0, 0.973487, -0.8, 0, -1.8)
+script = ExtResource("2_ida58")
+dampness = 1.0
+stiffness = 4
+
+[node name="Label3D2" type="Label3D" parent="Wheels/FL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975176, 0)
+
+[node name="BR" type="RayCast3D" parent="Wheels"]
+transform = Transform3D(0.973487, 0, 0, 0, 0.973487, 0, 0, 0, 0.973487, 0.8, 0, 1.8)
+script = ExtResource("2_ida58")
+dampness = 1.0
+stiffness = 4
+
+[node name="Label3D3" type="Label3D" parent="Wheels/BR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.900031, 0)
+
+[node name="BL" type="RayCast3D" parent="Wheels"]
+transform = Transform3D(0.973487, 0, 0, 0, 0.973487, 0, 0, 0, 0.973487, -0.8, 0, 1.8)
+script = ExtResource("2_ida58")
+dampness = 1.0
+stiffness = 4
+
+[node name="Label3D4" type="Label3D" parent="Wheels/BL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.900031, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+spring_length = 7.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
